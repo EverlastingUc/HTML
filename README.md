@@ -7,6 +7,11 @@ A complete, beginner-to-advanced HTML learning library, with a chapter-based int
 **Website:** https://everlastinguc.github.io/HTML/
 
 The website includes:
+- Dedicated interactive Learning Lab: advanced playground, viewport preview and HTML download
+- Educational markup checker, DOM tree explorer and guided coding challenges
+- HTML flashcards, 10-question final exam and printable completion certificate
+- Portfolio, restaurant menu, registration form and blog project starters
+- Browser-local notes and personal bookmarks
 - 12 structured chapters, from HTML foundations to advanced markup
 - Detailed explanations, examples, tables and practical notes
 - Chapter navigation and full-course search
