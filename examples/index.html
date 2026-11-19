@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical example demonstrating common HTML elements.">
+  <title>HTML Learning Example</title>
+</head>
+<body>
+  <header>
+    <h1>My HTML Learning Page</h1>
+    <p>A small page demonstrating an HTML document.</p>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#topics">Topics</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article id="about">
+      <h2>What is HTML?</h2>
+      <p><strong>HTML</strong> means HyperText Markup Language. It describes the structure and meaning of web content.</p>
+      <p>Read the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML reference</a>.</p>
+    </article>
+
+    <section id="topics">
+      <h2>Topics to learn</h2>
+      <ul>
+        <li>Document structure</li>
+        <li>Text and headings</li>
+        <li>Links and images</li>
+        <li>Lists and tables</li>
+        <li>Forms and semantic HTML</li>
+      </ul>
+      <h3>Learning order</h3>
+      <ol>
+        <li>Understand elements and attributes.</li>
+        <li>Build a simple page.</li>
+        <li>Add links, images and lists.</li>
+        <li>Practice forms and semantic structure.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Web technology roles</h2>
+      <table>
+        <caption>What each technology does</caption>
+        <thead><tr><th scope="col">Technology</th><th scope="col">Role</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">HTML</th><td>Structure and meaning</td></tr>
+          <tr><th scope="row">CSS</th><td>Presentation and layout</td></tr>
+          <tr><th scope="row">JavaScript</th><td>Behavior and logic</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact">
+      <h2>Contact form example</h2>
+      <form action="#" method="get">
+        <p><label for="visitor-name">Your name</label> <input id="visitor-name" name="name" type="text" required></p>
+        <p><label for="visitor-email">Your email</label> <input id="visitor-email" name="email" type="email" required></p>
+        <p><label for="visitor-message">Your message</label> <textarea id="visitor-message" name="message" rows="4"></textarea></p>
+        <button type="submit">Submit example form</button>
+      </form>
+      <p>This is a demonstration only. A real form needs a server endpoint.</p>
+    </section>
+
+    <section>
+      <h2>Expandable information</h2>
+      <details>
+        <summary>Why learn HTML?</summary>
+        <p>HTML is the foundation used to structure content on the web.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer><p>HTML Learning Example</p></footer>
+</body>
+</html>
