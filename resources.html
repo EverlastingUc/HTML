@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML Academy learning library: complete guide, cheat sheet and hands-on practice exercises.">
+  <meta name="theme-color" content="#0c1019">
+  <title>Learning Library — HTML Academy</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  <style>
+    .library-shell{max-width:1180px;margin:0 auto;padding:34px 28px 80px;display:grid;grid-template-columns:220px minmax(0,820px);gap:38px}
+    .library-nav{position:sticky;top:95px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px;display:grid;gap:8px}
+    .library-nav button{border:1px solid transparent;background:transparent;color:var(--muted);text-align:left;padding:10px;border-radius:8px;cursor:pointer}
+    .library-nav button[aria-current="page"],.library-nav button:hover{background:var(--panel2);color:var(--text);border-color:var(--line)}
+    .library-content{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(22px,4vw,48px)}
+    .library-content h1{font:800 clamp(32px,4vw,46px)/1.15 Manrope,sans-serif;letter-spacing:-.04em;color:var(--text);margin:8px 0 24px}
+    .library-content h2{font:700 25px Manrope,sans-serif;color:var(--text);margin:38px 0 14px;border-bottom:1px solid var(--line);padding-bottom:9px}
+    .library-content h3{font:700 19px Manrope,sans-serif;color:var(--text);margin:28px 0 10px}
+    .library-content p,.library-content li{color:var(--muted);line-height:1.8}
+    .library-content strong{color:var(--text)}
+    .library-content pre{background:var(--code);border:1px solid var(--line);border-radius:9px;padding:17px;overflow:auto}
+    .library-content pre code{background:none;padding:0;color:var(--text)}
+    .library-content :not(pre)>code{font:12px 'DM Mono';color:var(--accent);background:var(--panel2);padding:2px 5px;border-radius:4px}
+    .library-content table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;margin:18px 0}
+    .library-content th,.library-content td{padding:10px 12px;border:1px solid var(--line);text-align:left;min-width:100px}
+    .library-content th{color:var(--text);background:var(--panel2)}
+    .library-content blockquote{margin:18px 0;padding:4px 18px;border-left:3px solid var(--accent);background:var(--panel2)}
+    .library-content a{color:var(--accent)}
+    .library-status{color:var(--muted);font-size:13px}
+    .library-back{display:inline-block;margin-bottom:18px}
+    @media(max-width:760px){.library-shell{grid-template-columns:1fr;padding:20px 14px 55px;gap:16px}.library-nav{position:static;grid-template-columns:repeat(3,minmax(0,1fr));padding:7px}.library-nav button{text-align:center;font-size:12px;padding:9px 4px}.library-content{padding:22px 17px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="HTML Academy home"><span class="brand-mark">H</span><span>HTML<span class="brand-muted">ACADEMY</span></span></a>
+    <div class="top-actions"><a class="github-link" href="./">← Back to course</a><a class="github-link" href="https://github.com/EverlastingUc/HTML" target="_blank" rel="noopener">GitHub ↗</a></div>
+  </header>
+  <main class="library-shell">
+    <nav class="library-nav" aria-label="Learning library">
+      <button type="button" data-doc="guide">📖 Complete guide</button>
+      <button type="button" data-doc="cheatsheet">⚡ Cheat sheet</button>
+      <button type="button" data-doc="practice">✍️ Practice</button>
+    </nav>
+    <article class="library-content">
+      <a class="library-back" href="./">← Return to lessons</a>
+      <div class="eyebrow">HTML ACADEMY · LEARNING LIBRARY</div>
+      <p class="library-status" id="library-status" role="status">Loading resource…</p>
+      <div id="markdown-content"></div>
+    </article>
+  </main>
+  <script>
+    const files={guide:{file:'HTML-GUIDE.md',title:'Complete HTML Guide'},cheatsheet:{file:'CHEATSHEET.md',title:'HTML Cheat Sheet'},practice:{file:'PRACTICE.md',title:'Practice Exercises'}};
+    const content=document.getElementById('markdown-content');
+    const status=document.getElementById('library-status');
+    async function showDocument(name){
+      const doc=files[name]||files.guide;
+      document.querySelectorAll('[data-doc]').forEach(button=>button.setAttribute('aria-current',button.dataset.doc===name?'page':'false'));
+      status.textContent='Loading '+doc.title+'…';
+      content.innerHTML='';
+      try{
+        const response=await fetch(doc.file);
+        if(!response.ok)throw new Error('HTTP '+response.status);
+        const markdown=await response.text();
+        const rendered=marked.parse(markdown,{gfm:true,breaks:false});
+        content.innerHTML=DOMPurify.sanitize(rendered);
+        status.textContent=doc.title+' · Read, search and study directly inside HTML Academy.';
+        document.title=doc.title+' — HTML Academy';
+        history.replaceState(null,'','#'+name);
+        content.querySelectorAll('a').forEach(a=>{if(a.hostname&&a.hostname!==location.hostname){a.target='_blank';a.rel='noopener noreferrer';}});
+      }catch(error){
+        status.textContent='Could not load this resource. Please refresh the page and try again.';
+        content.innerHTML='<p>The learning resource could not be loaded ('+String(error.message).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))+').</p>';
+      }
+    }
+    document.querySelectorAll('[data-doc]').forEach(button=>button.addEventListener('click',()=>showDocument(button.dataset.doc)));
+    showDocument(location.hash.slice(1)||'guide');
+  </script>
+</body>
+</html>
