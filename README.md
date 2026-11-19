@@ -1,37 +1,72 @@
-# Learn HTML — Complete Beginner-to-Advanced Guide
+# HTML Academy — Complete HTML Learning Repository
 
-A practical learning repository for **HTML (HyperText Markup Language)**, from your first element to semantic, accessible, form-based and media-rich pages.
+A complete, beginner-to-advanced HTML learning library, with a chapter-based interactive textbook and detailed written references.
 
-HTML defines webpage structure and meaning. CSS controls presentation; JavaScript adds programmable behavior.
+## 🌐 Interactive textbook
 
-## Start learning
+**Website:** https://everlastinguc.github.io/HTML/
 
-1. **[HTML-GUIDE.md](HTML-GUIDE.md)** — complete course with explanations and examples.
+The website includes:
+- 12 structured chapters, from HTML foundations to advanced markup
+- Detailed explanations, examples, tables and practical notes
+- Chapter navigation and full-course search
+- Per-chapter knowledge-check quizzes
+- Saved learning progress in your browser
+- Live HTML editor and sandboxed preview
+- Interactive Three.js 3D visualization
+- Dark/light theme and responsive layout
+
+The first deployment is published automatically by GitHub Actions when changes are pushed to `main`. In repository Settings → Pages, set the publishing source to **GitHub Actions** if it is not already selected.
+
+## 📚 Written learning material
+
+1. **[HTML-GUIDE.md](HTML-GUIDE.md)** — complete written course and reference.
 2. **[CHEATSHEET.md](CHEATSHEET.md)** — quick reference for syntax, elements and attributes.
-3. **[PRACTICE.md](PRACTICE.md)** — exercises, projects and progress checklist.
-4. **[examples/index.html](examples/index.html)** — a complete example page you can open in a browser.
+3. **[PRACTICE.md](PRACTICE.md)** — exercises, mini-projects and progress checklist.
+4. **[examples/index.html](examples/index.html)** — a complete example page.
 
-## Course roadmap
+## 🧭 Course chapters
 
-- HTML fundamentals: tags, elements, attributes, nesting and comments
-- Document structure: doctype, html, head, metadata, body and title
-- Text: headings, paragraphs, emphasis, quotations and code
-- Links, URLs, images and responsive images
-- Lists and accessible data tables
-- Forms, input types, labels and browser validation
-- Semantic layout and document landmarks
-- Audio, video and embedded content
-- Metadata, SEO and social previews
-- Accessibility and ARIA fundamentals
-- Modern elements: details, dialog, template, progress and meter
-- SVG, canvas, security, performance and validation
-- Exercises and practical projects
+1. Welcome to HTML
+2. Your First HTML Document
+3. Tags, Elements & Attributes
+4. Text, Headings & Content
+5. Links, URLs & Navigation
+6. Images & Responsive Media
+7. Lists, Tables & Data
+8. Forms & User Input
+9. Semantic HTML & Accessibility
+10. Media, Metadata & Modern HTML
+11. Advanced HTML, SVG & Performance
+12. Projects, Validation & Next Steps
 
-## Official references
+## 🛠️ Project structure
+
+```text
+HTML/
+├── index.html
+├── assets/
+│   ├── styles.css
+│   ├── app.js
+│   ├── chapters.js
+│   └── three-scene.js
+├── .github/workflows/
+│   └── deploy.yml
+├── HTML-GUIDE.md
+├── CHEATSHEET.md
+├── PRACTICE.md
+└── examples/
+    └── index.html
+```
+
+The site is a static project. Three.js is loaded as an ES module from a CDN; an internet connection is needed for the 3D visualization. The textbook and core navigation are plain HTML, CSS and JavaScript.
+
+## 📖 Official references
 
 - [MDN HTML overview](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [MDN Learn: Structuring content with HTML](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content)
+- [MDN HTML element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 - [WHATWG HTML Living Standard](https://html.spec.whatwg.org/)
+- [Three.js documentation](https://threejs.org/manual/)
 - [Nu HTML Checker](https://validator.w3.org/nu/)
 
-No prior HTML knowledge is required. Read a topic, type its examples yourself, open the file in a browser and experiment.
+No previous HTML knowledge is required. Read a chapter, type the examples yourself, experiment in the playground and complete the exercises.
