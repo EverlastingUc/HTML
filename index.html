@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A complete interactive HTML textbook: learn web structure from your first tag to semantic, accessible, production-ready documents.">
+  <meta name="theme-color" content="#101522">
+  <title>HTML Academy — The Interactive Textbook</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"}}
+  </script>
+  <script type="module" src="assets/three-scene.js"></script>
+  <script type="module" src="assets/chapters.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#lesson">Skip to lesson</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="HTML Academy home"><span class="brand-mark">H</span><span>HTML<span class="brand-muted">ACADEMY</span></span></a>
+    <div class="top-actions">
+      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search lessons, tags, concepts…" autocomplete="off"><kbd>Ctrl K</kbd></label>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle theme">◐</button>
+      <a class="github-link" href="https://github.com/EverlastingUc/HTML" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Course navigation">
+      <div class="course-label">THE COMPLETE COURSE</div>
+      <div class="progress-card">
+        <div class="progress-heading"><span>Your progress</span><strong id="progress-label">0%</strong></div>
+        <div class="progress-track"><span id="progress-bar"></span></div>
+        <small id="progress-detail">0 of 12 chapters completed</small>
+      </div>
+      <nav id="chapter-nav" class="chapter-nav"></nav>
+      <div class="sidebar-bottom">
+        <a href="HTML-GUIDE.md">Full written guide ↗</a>
+        <a href="CHEATSHEET.md">HTML cheat sheet ↗</a>
+        <a href="PRACTICE.md">Practice exercises ↗</a>
+      </div>
+    </aside>
+    <main id="lesson" class="lesson-area" tabindex="-1">
+      <div class="mobile-course"><button id="menu-toggle" type="button">☰ Chapters</button><span id="mobile-chapter-name">Introduction</span></div>
+      <div id="lesson-content" class="lesson-content" aria-live="polite"></div>
+      <footer class="lesson-footer">
+        <button id="previous" class="secondary-button" type="button">← Previous</button>
+        <button id="mark-complete" class="secondary-button" type="button">Mark chapter complete ✓</button>
+        <button id="next" class="primary-button" type="button">Next chapter →</button>
+      </footer>
+    </main>
+    <aside class="right-rail" aria-label="Lesson tools">
+      <section class="rail-card">
+        <span class="eyebrow">LEARNING TOOLS</span>
+        <h3>HTML playground</h3>
+        <p>Write HTML and preview it instantly in a safe sandbox.</p>
+        <button class="rail-button" id="open-playground" type="button">Open playground ↗</button>
+      </section>
+      <section class="rail-card">
+        <span class="eyebrow">INTERACTIVE 3D</span>
+        <h3>Explore the DOM</h3>
+        <div id="three-stage" role="img" aria-label="Interactive 3D visualization of nested HTML document layers"><div class="three-loading">Loading 3D scene…</div></div>
+        <p class="rail-note">Drag to rotate · Scroll to zoom</p>
+        <button class="rail-button" id="reset-scene" type="button">Reset 3D view</button>
+      </section>
+      <section class="rail-card">
+        <span class="eyebrow">REFERENCE</span>
+        <h3>Need an answer?</h3>
+        <a class="rail-text-link" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener">MDN HTML reference ↗</a>
+        <a class="rail-text-link" href="https://html.spec.whatwg.org/" target="_blank" rel="noopener">HTML Living Standard ↗</a>
+        <a class="rail-text-link" href="https://validator.w3.org/nu/" target="_blank" rel="noopener">HTML validator ↗</a>
+      </section>
+    </aside>
+  </div>
+  <dialog id="playground-dialog" class="playground-dialog">
+    <div class="dialog-head"><div><span class="eyebrow">EXPERIMENT</span><h2>HTML Playground</h2></div><button id="close-playground" class="icon-button" aria-label="Close playground">×</button></div>
+    <div class="playground-grid">
+      <label class="editor-label">HTML editor<textarea id="html-editor" spellcheck="false"><h1>Hello, web!</h1>
+<p>I am learning HTML.</p>
+<button type="button">A button</button></textarea></label>
+      <div class="preview-wrap"><div class="preview-label">LIVE PREVIEW · SANDBOXED</div><iframe id="preview" title="HTML playground preview" sandbox=""></iframe></div>
+    </div>
+    <div class="dialog-actions"><span>Preview runs in an isolated iframe without scripts.</span><button id="run-code" class="primary-button" type="button">Run preview ▶</button></div>
+  </dialog>
+  <script>
+    document.addEventListener('keydown', event => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault(); document.querySelector('#search').focus();
+      }
+    });
+  </script>
+</body>
+</html>
